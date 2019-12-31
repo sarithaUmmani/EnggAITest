@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Engineer-AI</h2>
+  <div class="my-4"></div>
+  <input class="p-2" [(ngModel)]="text" placeholder="search by title" name="userName">
+  <!-- created by table data -->
+  <table class="table">
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>CreatedAt</th>
+      <th>Author </th>
+    </tr>
+    <!-- created RawJsonData -->
+    <tr *ngFor="let zero of list|custom:text" data-toggle="modal" data-target="#ShowSelectedData" (click)="data(zero)">
+      <td>{{zero.title}}</td>
+      <td>{{zero.url}}</td>
+      <td>{{zero.created_at}}</td>
+      <td>{{zero.author}}</td>
+  </table>
+  <!-- The Modal selected data-->
+  <div class="modal" id="ShowSelectedData">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{result.title}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <pre>{{result|json}}</pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
